@@ -8,7 +8,7 @@ ventana::ventana() {
     anchopantalla = 1080;
     altopantalla = 920;
     escala1 = 0.1f;
-    escala2 = 0.1f;
+    escala2 = 0.2f;
     escala3 = 0.0f;
     auxescala= 0.0f;
 	auxrotacion = 0.0f;
@@ -20,7 +20,7 @@ ventana::ventana() {
     posicion2 = {0,0};
     velocidad = 200;
     Color1 = WHITE;
-    Color2 = GREEN;
+    Color2 = RED;
 	auxcolor = { 0,0,0,0 }; 
 }
 
@@ -52,7 +52,7 @@ void ventana::Cargatextura() {
     SetTextureFilter(fondoimagen, TEXTURE_FILTER_BILINEAR);
     player1 = LoadTexture("imagenes/mario1.png");
     SetTextureFilter(player1, TEXTURE_FILTER_BILINEAR);
-    player2 = LoadTexture("imagenes/Luigi.png");
+    player2 = LoadTexture("imagenes/mario1.png");
     SetTextureFilter(player2, TEXTURE_FILTER_BILINEAR);
 }
 
@@ -106,17 +106,17 @@ void ventana::movimiento() {
             posicion1 = posicion2;
             posicion2 = auxposicion;
 
-            auxescala = escala1;
+            /*auxescala = escala1;
             escala1 = escala2;
-            escala2 = auxescala;
+            escala2 = auxescala;*/
 
             auxrotacion = rotacion1;
             rotacion1 = rotacion2;
             rotacion2 = auxrotacion;
 
-            auxcolor = Color1;
+           /* auxcolor = Color1;
             Color1 = Color2;
-            Color2 = auxcolor;
+            Color2 = auxcolor;*/
         }
 
 
@@ -167,9 +167,9 @@ void ventana::movimiento() {
         DrawTextureEx(player1, posicion1, rotacion1, escala1, Color1);
         DrawTextureEx(player2, posicion2, rotacion2, escala2, Color2);
    
-        DrawText(TextFormat("MARIO BROS Posicion:%.0f, %.0f Escala: %.2f Rotacion: %.2f",posicion1.x, posicion1.y, escala1, rotacion1),10, 40, 20, BLACK);
-        DrawText(TextFormat("LUIGI Posicion(%.0f, %.0f Escala: %.2f Rotacion: %.2f",posicion2.x, posicion2.y, escala2, rotacion2),10, 70, 20, BLACK);
-        DrawText("MARIO: Movimiento FLECHAS                  |                   LUIGI:Movimiento WASD", 10, 10, 20, BLACK);
+        DrawText(TextFormat("Player1 Posicion: %.0f, %.0f Escala: %.2f Color: (R:%d, G:%d, B:%d)",posicion1.x, posicion1.y, escala1, Color1.r, Color1.g, Color1.b),10, 40, 20, BLACK);
+        DrawText(TextFormat("Player2 Posicion: %.0f, %.0f Escala: %.2f Color: (R:%d, G:%d, B:%d)", posicion2.x, posicion2.y, escala2, Color2.r, Color2.g, Color2.b), 10, 70, 20, BLACK);
+        DrawText("Player1 : Movimiento FLECHAS                  |                   Player2:Movimiento WASD", 10, 10, 20, BLACK);
          
         EndDrawing();
        
